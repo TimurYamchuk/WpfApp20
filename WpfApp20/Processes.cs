@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace WpfApp20
@@ -20,6 +20,7 @@ namespace WpfApp20
         {
             return $"{ProcName} (ID: {ProcId})";
         }
+
         public string GetDetails()
         {
             return $"Process Name: {ProcName}\nProcess ID: {ProcId}\nStart Time: {RefProc.StartTime}";
