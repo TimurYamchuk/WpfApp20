@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -28,6 +28,8 @@ namespace WpfApp20
             _timer.Tick += (sender, e) => UpdateProcesses();
             _timer.Start();
         }
+
+        private void UpdateProcesses(object sender, RoutedEventArgs e) => UpdateProcesses();
 
         private void EndProcess(object sender, RoutedEventArgs e)
         {
@@ -78,12 +80,7 @@ namespace WpfApp20
         {
             return Process.GetProcesses()
                           .OrderBy(p => p.ProcessName)
-                          .Select(p => new Processes
-                          {
-                              ProcId = p.Id,
-                              ProcName = p.ProcessName + ".exe",
-                              RefProc = p
-                          })
+                          .Select(p => new Processes(p.Id, p.ProcessName + ".exe", p))
                           .ToList();
         }
 
